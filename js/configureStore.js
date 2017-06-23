@@ -1,24 +1,22 @@
 
-'use strict';
-
-import { createStore, applyMiddleware, compose } from 'redux'
-import devTools from 'remote-redux-devtools'
-import thunk from 'redux-thunk'
-import reducer from './reducers'
-import { persistStore } from 'redux-persist'
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage } from 'react-native';
+import devTools from 'remote-redux-devtools';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { persistStore } from 'redux-persist';
+import reducer from './reducers';
 import promise from './promise';
 
 export default function configureStore(onCompletion:()=>void):any {
-	const enhancer = compose(
-		applyMiddleware(thunk, promise),
-		devTools({
-	     	name: 'NativeStarterKit', realtime: true
-	    }),
-	);
-	
-	let store = createStore(reducer, enhancer);
-	persistStore(store, {storage: AsyncStorage}, onCompletion);
-	
-	return store
+  const enhancer = compose(
+    applyMiddleware(thunk, promise),
+    devTools({
+      name: 'nativestarterkit', realtime: true,
+    }),
+  );
+
+  const store = createStore(reducer, enhancer);
+  persistStore(store, { storage: AsyncStorage }, onCompletion);
+
+  return store;
 }

@@ -17,10 +17,25 @@ import styles from "./styles";
 
 //const background = require("../../../images/hw70s_bkg.jpg");
 
+var Trello = require("trello");
+var trello = new Trello("MY APPLICATION KEY", "MY USER TOKEN");
+ 
 class Meetups extends Component {
   static navigationOptions = {
     header: null
   };
+
+  getMeetupInfo() {
+    //Callback
+    trello.getCardsOnList(listId, callback);
+ 
+    //Promise 
+    var cardsPromise = trello.getCardsOnList(listId);
+    cardsPromise.then((cards) => {
+      //do stuff 
+    });
+  }
+
   render() {
     const { props: { name, index, list } } = this;
     return (
