@@ -1,6 +1,6 @@
 {
-  "name": "NativeStarterKit",
-  "version": "6.2.0",
+  "name": "HarvestworksApp",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "postinstall": "remotedev-debugger",
